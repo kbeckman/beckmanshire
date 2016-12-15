@@ -1,0 +1,58 @@
+#! /usr/bin/env ruby
+
+require 'optparse'
+require 'ostruct'
+
+class GitLatestOptions 
+  
+  def self.current_branch
+    branch = `git rev-parse --abbrev-ref HEAD`.rstrip
+  end
+
+  def self.parse(args)
+    options = OpenStruct.new
+
+    # Defaults
+    options.remote = 'origin'
+    options.branch = self.current_branch
+
+    parser = OptionParser.new do |opts|
+      opts.banner = 'Usage: git latest [OPTIONS]'
+      opts.separator ''
+      opts.separator 'Description: Get the latest changes from remote repo.'
+      opts.separator ''
+      opts.separator 'Switch Options:'
+
+      opts.on('-b', '--branch [BRANCH]', 'Sets the target branch. Defaults to current branch...') do |branch|
+        options.branch = branch
+      end
+      
+      opts.on('-r', '--remote [REMOTE]', "Sets the remote repo. Defaults to 'origin'...") do |remote|
+        options.remote = remote
+      end
+      
+      opts.on('-o', '--origin', "Sets the remote repo to 'origin'.") do
+        options.remote = 'origin'
+      end
+      
+      opts.on('-u', '--upstream', "Sets the remote repo to 'upstream'.") do
+        options.remote = 'upstream'
+      end
+
+      opts.on_tail('-h', 'Display usage options.') do
+        puts opts
+        exit
+      end
+    end
+      
+    parser.parse!(args)
+    options
+  end
+
+end
+
+options = GitLatestOptions.parse(ARGV)
+
+system("git checkout #{options.branch}") unless options.branch == GitLatestOptions.current_branch
+system("git pull --rebase #{options.remote} #{options.branch}")
+

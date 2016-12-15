@@ -1,0 +1,72 @@
+####################################################################
+# 		    OpenSSL configuration file
+####################################################################
+
+dir		= /home/kbeckman/OpenSSL
+RANDFILE	= $dir/.rnd
+
+####################################################################
+[ ca ]
+default_ca    	= CA_default        # The default ca section
+
+####################################################################
+[ CA_default ]
+certificate		= $dir/myCA/cacert.pem			# CA X509 certificate
+private_key		= $dir/myCA/private/cakey.pem		# CA private key
+new_certs_dir		= $dir/signed_certs			# default directory for new certs
+RANDFILE		= $dir/myCA/private/private.rnd	# private random number file
+default_days		= 1825					# number of days certificate is valid
+default_md		= sha256				# default message digets algorithm
+serial			= $dir/serial				# serial number file
+database		= $di/index            			# database index file
+policy			= CA_default_policy
+x509_extensions		= x509v3_extensions    			# extentions to add to the cert
+
+
+[ CA_default_policy ]
+countryName            		= supplied
+stateOrProvinceName        	= supplied
+organizationName        	= supplied
+organizationalUnitName    	= optional
+commonName            		= supplied
+emailAddress            	= optional
+
+
+[ open_policy ]
+countryName        		= optional
+stateOrProvinceName    		= optional
+localityName        		= optional
+organizationName    		= optional
+organizationalUnitName  	= optional
+commonName            		= supplied
+emailAddress            	= optional
+
+####################################################################
+[ req ]
+default_bits        		= 2048
+default_keyfile     		= $dir/myCA/private/cakey.pem
+default_md			= sha256
+prompt				= no
+distinguished_name  		= CA_distinguished_name
+attributes        		= req_attributes
+x509_extensions         	= x509v3_extensions
+
+[ CA_distinguished_name ]
+commonName            		= KBeckman Root CA
+countryName            		= US
+stateOrProvinceName        	= TN
+localityName            	= Hermitage
+organizationName        	= Coding4StreetCred
+organizationalUnitName    	= IT
+emailAddress            	= kbeckman.c4sc@gmail.com
+
+
+[ req_attributes ]
+challengePassword        = A challenge password
+challengePassword_min    = 4
+challengePassword_max    = 20
+
+[ x509v3_extensions ]
+basicConstraints		= CA:TRUE
+subjectKeyIdentifier		= hash
+authorityKeyIdentifier		= keyid:always,issuer:always

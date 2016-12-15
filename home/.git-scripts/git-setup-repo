@@ -1,0 +1,46 @@
+#! /usr/bin/env ruby
+
+require 'optparse'
+require 'ostruct'
+
+class GitSetupRepoOptions
+
+  def self.parse(args)
+    options = OpenStruct.new
+
+    # Defaults
+    options.username  = 'Keith Beckman'
+    options.email     = 'kbeckman@redfournine.com'
+
+    parser = OptionParser.new do |opts|
+      opts.banner = 'Usage: git setup-repo [OPTIONS]'
+      opts.separator ''
+      opts.separator 'Description: Configures repo username and email settings.'
+      opts.separator ''
+      opts.separator 'Switch Options:'
+
+      opts.on('-u', '--username USERNAME', 'Sets the repo username.') do |username|
+        options.username = username
+      end
+      
+      opts.on('-e', '--email EMAIL', 'Sets the repo email.') do |email|
+        options.email = email
+      end
+
+      opts.on_tail('-h', 'Display usage options.') do
+        puts opts
+        exit
+      end
+    end
+
+    parser.parse!(args)
+    options
+  end
+
+end
+
+options = GitSetupRepoOptions.parse(ARGV)
+
+system "git config user.name \"#{options.username}\""
+system "git config user.email #{options.email}"
+

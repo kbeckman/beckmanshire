@@ -1,0 +1,53 @@
+#! /usr/bin/env ruby
+
+require 'optparse'
+require 'ostruct'
+
+class MacOsInstallerOptions
+
+  def self.parse(args)
+    options = OpenStruct.new
+
+    parser = OptionParser.new do |opts|
+      opts.banner = 'Usage: macOS-installer [OPTIONS]'
+      opts.separator ''
+      opts.separator 'Description: Creates a bootable OSX installer on a USB volume.'
+      opts.separator ''
+      opts.separator 'Prerequisites:'
+      opts.separator '1) Download the latest macOS installer from the Mac App Store.'
+      opts.separator '2) You must have a USB thumb drive insterted and named "Install macOS". If the drive has another'
+      opts.separator '   name, provide it with the --volume switch.'
+      opts.separator ''
+      opts.separator 'Switch Options:'
+
+      options.version = 'Sierra'
+      opts.on('-n', '--name [VERSION_NAME]', "macOS version name (default: '#{options.version}').") do |version|
+        options.version = version
+      end
+
+      options.volume = 'Install macOS'
+      opts.on('-v', '--volume [VOLUME]', "Target USB Volume name (default: '#{options.volume}').") do |volume|
+        options.volume = volume
+      end
+
+      opts.on_tail('-h', '--help', 'Display usage options.') do
+        puts opts
+        exit
+      end
+
+    end
+
+    parser.parse!(args)
+    options
+  end
+
+end
+
+options = MacOsInstallerOptions.parse(ARGV)
+
+app_path    = "/Applications/Install macOS #{options.version}.app"
+installer   = "#{app_path}/Contents/Resources/createinstallmedia"
+volume_path = "/Volumes/#{options.volume}"
+
+system "caffeinate -im sudo '#{installer}' --volume '#{volume_path}' --applicationpath '#{app_path}' --nointeraction"
+

@@ -1,0 +1,47 @@
+#! /usr/bin/env ruby
+
+require 'optparse'
+require 'ostruct'
+
+class ChecksumOptions
+
+  def self.parse(args)
+    options = OpenStruct.new
+    
+    parser = OptionParser.new do |opts|
+      opts.banner = 'Usage: checksum [OPTIONS]'
+      opts.separator ''
+      opts.separator 'Description: Calculates the SHA1, SHA256 and MD5 checksums for a given file.'
+      opts.separator ''
+      opts.separator 'Switch Options:'
+
+      opts.on('-f', '--file FILE', 'Target file for which checksum(s) will be calculated.') do |file|
+        options.file = file
+      end
+
+      opts.on_tail('-h', '--help', 'Display usage options.') do
+        puts opts
+        exit
+      end
+
+    end
+    
+    parser.parse!(args)
+    options
+  end
+
+end
+
+options = ChecksumOptions.parse(ARGV)
+
+if options.file.nil? || options.file == ''
+  puts 'You must specify a file with the (-f|--file) switch.'
+  exit
+end
+
+DIGEST_FUNCTIONS = %w(sha1 sha256 md5)
+
+DIGEST_FUNCTIONS.each do |function|
+  system "openssl dgst -#{function} #{options.file}"
+end
+

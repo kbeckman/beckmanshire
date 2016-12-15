@@ -1,0 +1,56 @@
+#! /usr/bin/env ruby
+
+require 'optparse'
+require 'ostruct'
+
+class DmFixIpOptions
+
+  def self.parse(args)
+    options = OpenStruct.new
+
+    parser = OptionParser.new do |opts|
+      opts.banner = 'Usage: docker-machine-fix-ip [OPTIONS]'
+      opts.separator ''
+      opts.separator 'Description: Disables DHCP in docker-machine to enforce static IP.'
+      opts.separator ''
+      opts.separator 'Switch Options:'
+
+      opts.on('-m', '--machine MACHINE', 'Target Docker machine.') do |machine|
+        options.machine = machine
+      end
+
+      opts.on('-i', '--ipaddress IPADDRESS', 'Static IP address.') do |ip_address|
+        options.ip_address = ip_address
+      end
+
+      opts.on_tail('-h', '--help', 'Display usage options.') do
+        puts opts
+        exit
+      end
+
+    end
+
+    parser.parse!(args)
+    options
+  end
+
+end
+
+options = DmFixIpOptions.parse(ARGV)
+
+if options.machine.nil? || options.machine == ''
+  puts 'You must specify a Docker machine with the (-m|--machine) switch.'
+  exit
+end
+
+if options.ip_address.nil? || options.ip_address == ''
+  puts 'You must specify an IP address with the (-i|--ipaddress) switch.'
+  exit
+end
+
+puts "Configuring static Docker host IP for #{options.machine}..."
+system "echo \"kill `more /var/run/udhcpc.eth1.pid`\nifconfig eth1 #{options.ip_address} netmask 255.255.255.0 broadcast 192.168.99.255 up\" | docker-machine ssh #{options.machine} sudo tee /var/lib/boot2docker/bootsync.sh > /dev/null"
+puts "Disabling DHCP so IP will not automatically revert..."
+system "docker-machine ssh #{options.machine} \"sudo cat /var/run/udhcpc.eth1.pid | xargs sudo kill\""
+system "docker-machine ssh #{options.machine} \"sudo ifconfig eth1 #{options.ip_address} netmask 255.255.255.0 broadcast 192.168.99.255 up\""
+

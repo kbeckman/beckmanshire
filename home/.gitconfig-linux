@@ -1,0 +1,18 @@
+[user]
+	name = kbeckman
+	email = kbeckman@redfournine.com
+[diff]
+	tool = diffmerge
+[difftool "diffmerge"]
+	cmd = /usr/bin/diffmerge --caption=File-Diff --title1=Latest-Revision $LOCAL $REMOTE
+[merge]
+	tool = diffmerge
+[mergetool "diffmerge"]
+	cmd = /usr/bin/diffmerge --merge --caption=File-Merge --title1=Remote --title2=Merge-Result --title3=Local-Changes --result=$MERGED $REMOTE $BASE $LOCAL
+[mergetool]
+	keepBackup = false
+[color]
+	ui = true
+[alias]
+[core]
+	excludesfile = ~/.gitignore_global

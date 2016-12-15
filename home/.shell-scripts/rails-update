@@ -1,0 +1,49 @@
+#! /usr/bin/env ruby
+
+require 'optparse'
+require 'ostruct'
+
+class HiddenFilesOptions
+
+  def self.parse(args)
+    options = OpenStruct.new
+
+    parser = OptionParser.new do |opts|
+      opts.banner = 'Usage: hidden-files [OPTIONS]'
+      opts.separator ''
+      opts.separator 'Description: Toggles the visiblity of hidden files in Finder.'
+      opts.separator ''
+      opts.separator 'Switch Options:'
+
+      opts.on('-s', '--show', 'Show hidden files.') do
+        options.show = true
+      end
+
+      opts.on('-h', '--hide', 'Hide hidden files.') do
+        options.show = false
+      end
+
+      opts.on_tail('-h', '--help', 'Display usage options.') do
+        puts opts
+        exit
+      end
+
+    end
+
+    parser.parse!(args)
+    options
+  end
+
+end
+
+options = HiddenFilesOptions.parse(ARGV)
+
+=begin
+if options.show.nil? || options.show == ''
+  puts 'You must specify a visibility option (-s|--show) (-h|--hide).'
+  exit
+end
+=end
+
+puts Dir.pwd
+

@@ -1,0 +1,141 @@
+#! /usr/bin/env ruby
+
+require 'optparse'
+require 'ostruct'
+require 'time'
+require 'yaml'
+
+require 'pry'
+require 'pry-byebug'
+
+class ArchiveOptions
+
+  def self.parse(args)
+    options = OpenStruct.new
+    
+    parser = OptionParser.new do |opts|
+      opts.banner = 'Usage: archive [OPTIONS]'
+      opts.separator ''
+      opts.separator 'Description: Archives the contents of the file system.'
+      opts.separator ''
+      opts.separator 'Switch Options:'
+
+      opts.on('-f', '--file=FILE', 'Configuration YAML file containing the archive targets.') do |file|
+        options.file = file
+      end
+    
+      options.archive_year = (Date.today.year - 1).to_s
+      opts.on('-y', '--year=YEAR', '(Optional) Year in which to archive files (defaults to last year.)') do |year|
+        options.archive_year = year
+      end
+    
+      options.trash = false
+      opts.on('--trash', '(Optional) Move archive files to Trash (off by default).') do |trash|
+        options.trash = true
+      end
+
+      opts.on_tail('-h', '--help', 'Display usage options.') do
+        puts opts
+        exit
+      end
+
+    end
+    
+    parser.parse!(args)
+    options
+  end
+
+end
+
+
+class Archiver
+
+  attr_accessor :archive_year, :target_config, :trash_files
+
+
+  def initialize(archive_year:, target_config:, trash_files:)
+    @archive_year   = archive_year
+    @target_config  = target_config
+    @trash_files    = trash_files
+  end
+
+  def archive
+    create_zip_file
+    trash_archived_files
+  end
+
+
+  private
+
+  def annual_archive?
+    target_config['type'] == 'annual'
+  end
+
+  def trash_files?
+    @trash_files
+  end
+
+  def trash_dir
+    File.join(Dir.home, '.Trash')
+  end
+
+  def source_dir
+    File.join(target_config['source_dir'], target_config['objective'])
+  end
+
+  def included_files
+    annual_archive? ? File.join(source_dir, "#{archive_year}*.*") : File.join(source_dir, '**/*')
+  end
+
+  def archive_dir
+    target_dir = target_config['objective'].split('/')
+    target_dir = target_dir.length > 1 ? target_dir[0..target_dir.length-2] : ''
+
+    annual_archive? ?
+      File.join(target_config['archive_dir'], archive_year, target_dir) :
+      File.join(target_config['archive_dir'], target_dir)
+  end
+
+  def archive_file_name
+    partial_name  = "#{target_config['objective'].split('/').last}.zip"
+    file_name     = annual_archive? ? "#{archive_year} - #{partial_name}" : partial_name
+    File.join(archive_dir, file_name)
+  end
+
+  def create_zip_file
+    unless Dir[included_files].empty?
+      command = "7z a -tzip '#{archive_file_name}' '#{included_files}'"
+
+      puts command
+      system command
+    end
+  end
+
+  def trash_archived_files
+    return unless trash_files?
+
+    target = annual_archive? ? Dir[included_files] : source_dir
+    FileUtils.mv(target, trash_dir)
+  end
+
+end
+
+
+OPTIONS = ArchiveOptions.parse(ARGV)
+
+if OPTIONS.file.nil? || OPTIONS.file == ''
+  puts 'You must specify a file with the (-f|--file) switch.'
+  exit
+end
+
+CONFIGURATION = YAML.load_file(OPTIONS.file)
+
+puts "Archive File: #{OPTIONS.file}"
+puts "Archive Year: #{OPTIONS.archive_year}"
+puts "Trash Archived Files: #{OPTIONS.trash}"
+
+
+CONFIGURATION['targets'].each do |target_config|
+  archiver = Archiver.new(archive_year: OPTIONS.archive_year, target_config: target_config, trash_files: OPTIONS.trash).archive
+end
+
