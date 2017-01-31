@@ -14,14 +14,8 @@ windows:
       panes:
         -
         -
-  - gear-chef:
+  - provisioning:
       root:   ~/Source-Code/GE/chef
-      layout: "2c29,310x84,0,0{154x84,0,0,1,155x84,155,0,4}"
-      panes:
-        -
-        -
-  - chef-zero:
-      root:   ~/Source-Code/GE/chef-zero
       layout: "2c29,310x84,0,0{154x84,0,0,1,155x84,155,0,4}"
       panes:
         -
@@ -31,5 +25,7 @@ windows:
       layout: "330b,313x85,0,0{156x85,0,0,4,156x85,157,0[156x42,157,0,8,156x42,157,43,10]}"
       panes:
         -
-        - vboxwebsrv -H 0.0.0.0 -v -b --logfile $HOME/Source-Code/GE/chef-zero/logs/vboxwebsrv.log
-        - tail -f $HOME/Source-Code/GE/chef-zero/logs/vboxwebsrv.log
+        -
+        -
+        #- vboxwebsrv -H 0.0.0.0 -v -b --logfile $HOME/Source-Code/GE/chef-zero/logs/vboxwebsrv.log
+        #- tail -f $HOME/Source-Code/GE/chef-zero/logs/vboxwebsrv.log

@@ -19,7 +19,7 @@
 	<key>AutoHideTmuxClientSession</key>
 	<false/>
 	<key>CheckTestRelease</key>
-	<true/>
+	<false/>
 	<key>ClosingHotkeySwitchesSpaces</key>
 	<true/>
 	<key>CommandSelection</key>
@@ -84,10 +84,14 @@
 	<true/>
 	<key>MaxVertically</key>
 	<false/>
+	<key>NSColorPanelMode</key>
+	<string>6</string>
+	<key>NSFontPanelAttributes</key>
+	<string>1, 0</string>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/Documents</string>
+	<string>~</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
-	<string>{712, 459}</string>
+	<string>{712, 448}</string>
 	<key>NSQuotedKeystrokeBinding</key>
 	<string></string>
 	<key>NSRepeatCountBinding</key>
@@ -118,14 +122,16 @@
 		<key>TB Is Shown</key>
 		<integer>1</integer>
 	</dict>
+	<key>NSWindow Frame NSColorPanel</key>
+	<string>427 412 228 325 0 0 1680 1027 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>853 931 606 456 0 0 2560 1417 </string>
+	<string>365 566 606 456 0 0 1680 1027 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>987 768 620 392 0 0 2560 1417 </string>
+	<string>548 476 620 392 0 0 1680 1027 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>269 214 918 381 0 0 1440 877 </string>
+	<string>269 122 796 473 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>1067 990 650 427 0 0 2560 1417 </string>
+	<string>37 8 1642 1019 0 0 1680 1027 </string>
 	<key>NeverWarnAboutShortLivedSessions_D992622C-DD11-47B4-872D-617464408CC2</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_D992622C-DD11-47B4-872D-617464408CC2_selection</key>
@@ -860,28 +866,30 @@
 	</array>
 	<key>NoSyncConfirmBeta</key>
 	<true/>
+	<key>NoSyncDisablePromotions</key>
+	<true/>
 	<key>NoSyncDoNotWarnBeforeMultilinePaste</key>
 	<true/>
 	<key>NoSyncDoNotWarnBeforeMultilinePaste_selection</key>
 	<integer>0</integer>
-	<key>NoSyncInstallationId</key>
-	<string>8515623E-04C8-4B53-AE12-C3F04587D5A9</string>
-	<key>NoSyncNeverRemindPrefsChangesCopy</key>
+	<key>NoSyncHaveShownPromoWithId_4</key>
 	<true/>
+	<key>NoSyncInstallationId</key>
+	<string>A767D69B-5403-45C7-9812-70BCFCC1E508</string>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
-	<integer>0</integer>
+	<integer>1</integer>
 	<key>NoSyncPermissionToShowTip</key>
 	<false/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
-	<real>487622009.71992701</real>
+	<real>486651213.91091698</real>
 	<key>NoSyncTimeOfLastPromo</key>
-	<real>487028116.371921</real>
+	<real>477846652.40657902</real>
 	<key>NoSyncTimeOfLastPromoDownload</key>
-	<real>487603970.74912202</real>
+	<real>477810808.05000198</real>
 	<key>OnlyWhenMoreTabs</key>
-	<true/>
+	<false/>
 	<key>OpenArrangementAtStartup</key>
 	<false/>
 	<key>OpenBookmark</key>
@@ -932,9 +940,9 @@
 	<key>Print In Black And White</key>
 	<true/>
 	<key>PromptOnQuit</key>
-	<true/>
-	<key>QuitWhenAllWindowsClosed</key>
 	<false/>
+	<key>QuitWhenAllWindowsClosed</key>
+	<true/>
 	<key>RightCommand</key>
 	<integer>8</integer>
 	<key>RightOption</key>
@@ -944,11 +952,11 @@
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/testing.xml?shard=43</string>
+	<string>https://iterm2.com/appcasts/final.xml?shard=27</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-09-19T13:20:46Z</date>
+	<date>2017-01-05T19:48:40Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
@@ -990,7 +998,7 @@
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
 	<key>iTerm Version</key>
-	<string>3.0.5</string>
+	<string>3.0.13</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
