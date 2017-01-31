@@ -26,6 +26,7 @@ if has ('autocmd')
   autocmd FileType go         setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
   autocmd FileType html       setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
   autocmd FileType javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+  autocmd FileType json       setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
   autocmd FileType markdown   setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
   autocmd FileType rake       setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
   autocmd FileType ruby       setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
