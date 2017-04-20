@@ -35,6 +35,9 @@ if has ('autocmd')
   autocmd FileType yaml       setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 endif
 
+" Disable 'Q' / diable Vim Ex mode...
+noremap Q <nop>
+
 " Show syntax highlighting groups for word under cursor
 nmap <C-S-P> :call <SID>SynStack()<CR>
 function! <SID>SynStack()
