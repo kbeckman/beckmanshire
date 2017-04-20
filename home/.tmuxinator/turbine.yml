@@ -1,7 +1,7 @@
 # ~/.tmuxinator/turbine.yml
 
 name: turbine
-root: ~/Source-Code/github.build.ge.com/cloud-center/paas-orchestration
+root: ~/Source-Code/github.build.ge.com/cloud-center
 
 # Optional tmux socket
 # socket_name: foo
@@ -16,23 +16,24 @@ startup_window: maestro
 
 windows:
   - editor:
-  - orchestration:
+  - turbine-ui:
+      root:   ~/Source-Code/github.build.ge.com/cloud-center/turbine-ui
       layout: "2c29,310x84,0,0{154x84,0,0,1,155x84,155,0,4}"
       panes:
         - git status
-        -
+        - be rspec --version
   - maestro:
       root:   ~/Source-Code/github.build.ge.com/cloud-center/maestro
       layout: "2c29,310x84,0,0{154x84,0,0,1,155x84,155,0,4}"
       panes:
         - git status
-        - source spec/stub_ucp_config.sh
+        - source spec/stub_ucp_config.sh && be rspec --version
   - maratona:
       root:   ~/Source-Code/github.build.ge.com/cloud-center/maratona
       layout: "9228,278x79,0,0{138x79,0,0,3,139x79,139,0[139x69,139,0,7,139x9,139,70{69x9,139,70,20,69x9,209,70,21}]}"
       panes:
         - git status
-        - rspec --version
+        - be rspec --version
         - yard
         - yard server --reload
   - console:
