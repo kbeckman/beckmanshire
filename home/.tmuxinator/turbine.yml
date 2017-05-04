@@ -42,5 +42,5 @@ windows:
         - docker-machine ls
         -
         -
-        -
+        - cd ~/Source-Code/demos/predix-seed && gulp
 
