@@ -53,6 +53,10 @@ end
 
 options = GitLatestOptions.parse(ARGV)
 
+# Prune any orphaned branches removed from the remote...
+system("git remote prune #{options.remote}")
+
+# Checkout branch, pull and rebase...
 system("git checkout #{options.branch}") unless options.branch == GitLatestOptions.current_branch
 system("git pull --rebase #{options.remote} #{options.branch}")
 
