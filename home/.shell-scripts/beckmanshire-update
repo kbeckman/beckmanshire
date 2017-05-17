@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+castle=$HOME/.homesick/repos/beckmanshire
+
+# Get latest beckmanshire environment...
+if [ -d $castle ]; then
+  cd $castle
+  git stash save "Beckmanshire WIP"
+  git latest
+  git push origin master
+  git stash pop
+  cd $HOME
+fi
+
