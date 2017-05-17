@@ -9,6 +9,5 @@ if [ -d $castle ]; then
   git latest
   git push origin master
   git stash pop
-  cd $HOME
 fi
 
