@@ -16,9 +16,9 @@ export BUNDLER_EDITOR=vim
 
 # Docker environment...
 env_docker=~/.env-docker
-if [ -e $env_docker ]; then source $env_docker; fi
+[[ -e $env_docker ]] && source $env_docker
 
 # Source Contract environment...
 contract_env=~/.contract-env
-if [ -e $contract_env ]; then source $contract_env; fi
+[[ -e $contract_env ]] && source $contract_env
 
