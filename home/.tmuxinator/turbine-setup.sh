@@ -10,5 +10,5 @@ eval $(docker-machine env default)
 
 docker-machine-fix-ip --machine default --ipaddress 192.168.99.105
 
-docker-compose -f ~/Source-Code/github.build.ge.com/cloud-center/paas-orchestration/development-compose.yml up -d
+docker-compose -f ~/Source-Code/github.build.ge.com/cloud-center/turbine-ui/development-compose.yml up -d
 
