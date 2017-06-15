@@ -9,19 +9,19 @@ pre_window: eval "$(chef shell-init zsh)"
 windows:
   - editor:
   - cookbooks:
-      root:   ~/Source-Code/GE/chef/cookbooks
+      root:   ~/Source-Code/github.build.ge.com/cloud-center-chef/cookbooks
       layout: "2c29,310x84,0,0{154x84,0,0,1,155x84,155,0,4}"
       panes:
         -
         -
   - provisioning:
-      root:   ~/Source-Code/GE/chef
+      root:   ~/Source-Code/github.build.ge.com/cloud-center-chef
       layout: "2c29,310x84,0,0{154x84,0,0,1,155x84,155,0,4}"
       panes:
         -
         -
   - ssh:
-      root:   ~/Source-Code/GE/chef
+      root:   ~/Source-Code/github.build.ge.com/cloud-center-chef
       layout: "330b,313x85,0,0{156x85,0,0,4,156x85,157,0[156x42,157,0,8,156x42,157,43,10]}"
       panes:
         -
