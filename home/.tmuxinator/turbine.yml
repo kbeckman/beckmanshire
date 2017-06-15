@@ -12,12 +12,12 @@ pre: ~/.tmuxinator/turbine-setup.sh
 # Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
 # pre_window: rbenv shell 2.0.0-p247
 
-startup_window: maestro
+startup_window: turbine-web
 
 windows:
   - editor:
-  - turbine-ui:
-      root:   ~/Source-Code/github.build.ge.com/cloud-center/turbine-ui
+  - turbine-web:
+      root:   ~/Source-Code/github.build.ge.com/cloud-center/turbine-web
       layout: "2c29,310x84,0,0{154x84,0,0,1,155x84,155,0,4}"
       panes:
         - git status
@@ -42,5 +42,6 @@ windows:
         - docker-machine ls
         -
         -
-        - cd ~/Source-Code/demos/predix-seed && gulp
+        -
+#       - cd ~/Source-Code/demos/predix-seed && gulp
 
