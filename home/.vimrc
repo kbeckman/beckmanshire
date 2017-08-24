@@ -19,7 +19,6 @@ call matchadd('ColorColumn', '\%120v', 100)
 
 set number
 
-
 setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 if has ('autocmd')
   autocmd FileType elixir     setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
