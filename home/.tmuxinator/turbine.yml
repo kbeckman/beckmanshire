@@ -35,13 +35,21 @@ windows:
         - git status
         - be rspec --version
         - yard
-        - yard server --reload
+        - yard server --reload --port 8808
+  - tomo:
+      root:   ~/Source-Code/github.build.ge.com/cloud-center/tomo
+      layout: "9228,278x79,0,0{138x79,0,0,3,139x79,139,0[139x69,139,0,7,139x9,139,70{69x9,139,70,20,69x9,209,70,21}]}"
+      panes:
+        - git status
+        - be rspec --version
+        - yard
+        - yard server --reload --port 8809
   - console:
       layout: "317c,314x84,0,0{156x84,0,0,2,157x84,157,0[157x33,157,0,4,157x27,157,34,5,157x22,157,62,9]}"
       panes:
         - docker-machine ls
         -
         -
-        -
+        - cd gear && rails server -p 3001
 #       - cd ~/Source-Code/demos/predix-seed && gulp
 
