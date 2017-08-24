@@ -1,7 +1,7 @@
 # ~/.tmuxinator/c4sc-blog.yml
 
 name: c4sc-blog
-root: ~/Source-Code/Github/c4sc-blog
+root: ~/Source-Code/github.com/kbeckman/c4sc-blog
 
 # Optional tmux socket
 # socket_name: foo
@@ -11,12 +11,6 @@ root: ~/Source-Code/Github/c4sc-blog
 
 # Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
 # pre_window: rbenv shell 2.0.0-p247
-
-# Pass command line options to tmux. Useful for specifying a different tmux.conf.
-# tmux_options: -f ~/.tmux.mac.conf
-
-# Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
-# tmux_command: byobu
 
 startup_window: editor
 
@@ -29,3 +23,4 @@ windows:
         - middleman --help
         -
         -
+
