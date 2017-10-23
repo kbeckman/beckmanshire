@@ -14,7 +14,7 @@ windows:
       panes:
         -
         -
-  - provisioning:
+  - knife:
       root:   ~/Source-Code/github.build.ge.com/cloud-center-chef/chef
       layout: "2c29,310x84,0,0{154x84,0,0,1,155x84,155,0,4}"
       panes:
