@@ -24,10 +24,12 @@ windows:
         - be rspec --version
   - maestro:
       root:   ~/Source-Code/github.build.ge.com/cloud-center/maestro
-      layout: "2c29,310x84,0,0{154x84,0,0,1,155x84,155,0,4}"
+      layout: "9228,278x79,0,0{138x79,0,0,3,139x79,139,0[139x69,139,0,7,139x9,139,70{69x9,139,70,20,69x9,209,70,21}]}"
       panes:
         - git status
         - source spec/stub_ucp_config.sh && be rspec --version
+        - yard
+        - yard server --reload --port 8808
   - maratona:
       root:   ~/Source-Code/github.build.ge.com/cloud-center/maratona
       layout: "9228,278x79,0,0{138x79,0,0,3,139x79,139,0[139x69,139,0,7,139x9,139,70{69x9,139,70,20,69x9,209,70,21}]}"
@@ -35,7 +37,7 @@ windows:
         - git status
         - be rspec --version
         - yard
-        - yard server --reload --port 8808
+        - yard server --reload --port 8809
   - tomo:
       root:   ~/Source-Code/github.build.ge.com/cloud-center/tomo
       layout: "9228,278x79,0,0{138x79,0,0,3,139x79,139,0[139x69,139,0,7,139x9,139,70{69x9,139,70,20,69x9,209,70,21}]}"
@@ -43,7 +45,7 @@ windows:
         - git status
         - be rspec --version
         - yard
-        - yard server --reload --port 8809
+        - yard server --reload --port 8810
   - console:
       layout: "317c,314x84,0,0{156x84,0,0,2,157x84,157,0[157x33,157,0,4,157x27,157,34,5,157x22,157,62,9]}"
       panes:
@@ -51,5 +53,4 @@ windows:
         -
         -
         - cd gear && rails server -p 3001
-#       - cd ~/Source-Code/demos/predix-seed && gulp
 
