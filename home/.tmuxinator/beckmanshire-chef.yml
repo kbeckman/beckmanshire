@@ -1,34 +1,24 @@
 # ~/.tmuxinator/beckmanshire-chef.yml
 
 name: beckmanshire-chef
-root: ~/Source-Code/Github/beckmanshire-chef
+root: ~/code/github.com/kbeckman/beckmanshire-chef
 
-# Optional tmux socket
-# socket_name: foo
-
-# Runs before everything. Use it to start daemons etc.
-# pre: sudo /etc/rc.d/mysqld start
-
+# Use Chef Ruby instead of system Ruby...
 pre_window: eval "$(chef shell-init zsh)"
 
-# Pass command line options to tmux. Useful for specifying a different tmux.conf.
-# tmux_options: -f ~/.tmux.mac.conf
-
-# Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
-# tmux_command: byobu
-
-startup_window: console
+startup_window: cookbooks
 
 windows:
   - vim:
-  - console:
+  - knife:
       layout: even-horizontal
       panes:
         - knife node list
         - ssh vm-macos-sierra
-  - beckmanshire:
-      layout: "a289,278x74,0,0{138x74,0,0,1,139x74,139,0[139x22,139,0,4,139x28,139,23,8,139x22,139,52,9]}"
+  - cookbooks:
+    root:   ~/code/github.com/kbeckman/beckmanshire-chef/cookbooks
+      layout: even-horizontal
       panes:
-      - git status
-      -
+        - git status
+        -
 
