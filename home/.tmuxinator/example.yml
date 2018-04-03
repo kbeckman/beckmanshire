@@ -1,0 +1,39 @@
+# ~/.tmuxinator/example.yml
+
+name:           example
+startup_window: web-app
+root:           ~/code/github.com/kbeckman
+
+on_project_first_start: ~/.tmuxinator/example-setup.sh
+on_project_stop:        ~/.tmuxinator/example-teardown.sh
+
+windows:
+  - editor:
+  - web-app:
+      root:   ~/code/github.com/kbeckman/web-app
+      layout: "2c29,310x84,0,0{154x84,0,0,1,155x84,155,0,4}"
+      panes:
+        - git status
+        - be rspec --version
+  - rest-api:
+      root:   ~/code/github.com/kbeckman/rest-api
+      layout: "2c29,310x84,0,0{154x84,0,0,1,155x84,155,0,4}"
+      panes:
+        - git status
+        - be rspec --version
+  - library:
+      root:   ~/code/github.com/kbeckman/library
+      layout: "e105,313x84,0,0{156x84,0,0,2,156x84,157,0[156x65,157,0,5,156x18,157,66{78x18,157,66,6,77x18,236,66,7}]}"
+      panes:
+        - git status
+        - be rspec --version
+        - yard
+        - yard server --reload --port 8808
+  - console:
+      layout: "317c,314x84,0,0{156x84,0,0,2,157x84,157,0[157x33,157,0,4,157x27,157,34,5,157x22,157,62,9]}"
+      panes:
+        - docker-machine ls
+        -
+        -
+        -
+
