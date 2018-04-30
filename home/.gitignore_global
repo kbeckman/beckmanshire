@@ -1,9 +1,17 @@
-*~
-.DS_Store
+# Vim
 *.swp
+home/.vim/.netrwhist
 
-# Rubymine
+# IntelliJ / Rubymine / Goland / Etc
 .idea
 
 # RVM
 .ruby-gemset
+
+# dotenv-rails
+.env.local
+.env.test.local
+
+# Other
+.DS_Store
+
