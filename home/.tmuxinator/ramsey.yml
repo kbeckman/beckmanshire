@@ -1,0 +1,39 @@
+# ~/.tmuxinator/ramsey.yml
+
+name:           ramsey
+startup_window: direct_access
+root:           ~/code/github.com/lampo
+
+on_project_first_start: ~/.tmuxinator/ramsey-setup.sh
+on_project_stop:        bash ~/.tmuxinator/ramsey-teardown.sh
+
+windows:
+  - editor:
+  - direct_access:
+      root:   ~/code/github.com/lampo/entreleadership-direct-access
+      layout: "2c29,310x84,0,0{154x84,0,0,1,155x84,155,0,4}"
+      panes:
+        - git status
+        - be rspec --version
+  - weekly_report_rails:
+      root:   ~/code/github.com/lampo/entreleadership-weekly-report-rails
+      layout: "e105,313x84,0,0{156x84,0,0,2,156x84,157,0[156x65,157,0,5,156x18,157,66{78x18,157,66,6,77x18,236,66,7}]}"
+      panes:
+        - git status
+        - be rspec --version
+        -
+        -
+  - weekly_report_service:
+      root:   ~/code/github.com/lampo/entreleadership-weekly-report-service
+      layout: "2c29,310x84,0,0{154x84,0,0,1,155x84,155,0,4}"
+      panes:
+        - 
+        - 
+  - console:
+      layout: "317c,314x84,0,0{156x84,0,0,2,157x84,157,0[157x33,157,0,4,157x27,157,34,5,157x22,157,62,9]}"
+      panes:
+        - docker-machine ls
+        - 
+        - cd entreleadership-weekly-report-rails && be rails server --port 5000
+        - cd entreleadership-weekly-report-rails && bin/webpack-dev-server
+
