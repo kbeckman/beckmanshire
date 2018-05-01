@@ -34,6 +34,11 @@ if has ('autocmd')
   autocmd FileType yaml       setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 endif
 
+
+" https://csswizardry.com/2017/01/preparing-vim-for-apples-touch-bar
+" Map jj to <esc> in Insert mode
+inoremap jj <esc>
+
 " Disable 'Q' / diable Vim Ex mode...
 noremap Q <nop>
 
