@@ -1,0 +1,17 @@
+# ~/.tmuxinator/blog.yml
+
+name: blog
+root: ~/code/github.com/kbeckman/blog
+
+startup_window: editor
+
+windows:
+  - editor:
+  - c4sc-blog:
+      layout: "a289,278x74,0,0{138x74,0,0,1,139x74,139,0[139x22,139,0,4,139x28,139,23,8,139x22,139,52,9]}"
+      panes:
+        - git status
+        - middleman --help
+        -
+        -
+
