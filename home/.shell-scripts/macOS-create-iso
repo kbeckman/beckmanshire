@@ -1,34 +1,22 @@
 #!/usr/bin/env bash
 
-# Mount the macOS installer...
-hdiutil attach "/Applications/Install macOS Sierra.app/Contents/SharedSupport/InstallESD.dmg" \
-  -noverify -nobrowse -mountpoint /Volumes/esd
+# http://www.insanelymac.com/forum/topic/325603-how-to-create-a-bootable-high-sierra-iso-for-vmware/
+# https://tylermade.net/2017/10/05/how-to-create-a-bootable-iso-image-of-macos-10-13-high-sierra-installer/
 
 # Create an empty ISO file...
-hdiutil create -o Sierra.cdr -size 6144m -layout SPUD -fs HFS+J
+hdiutil create -o /tmp/HighSierra.cdr -size 5130m -layout SPUD -fs HFS+J
 
 # Mount the empty ISO file...
-hdiutil attach Sierra.cdr.dmg -noverify -nobrowse -mountpoint /Volumes/iso
+hdiutil attach /tmp/HighSierra.cdr.dmg -noverify -nobrowse -mountpoint /Volumes/iso
 
-# Copy installer contents...
-asr restore -source /Volumes/esd/BaseSystem.dmg -target /Volumes/iso -noprompt -noverify -erase
+# Execute macOS installer command...
+sudo /Applications/Install\ macOS\ High\ Sierra.app/Contents/Resources/createinstallmedia --volume /Volumes/iso
 
-# Remove invalid installer package link...
-rm /Volumes/OS\ X\ Base\ System/System/Installation/Packages
-
-# Copy installer package files...
-cp -rp /Volumes/esd/Packages /Volumes/OS\ X\ Base\ System/System/Installation
-cp -rp /Volumes/esd/BaseSystem.chunklist /Volumes/OS\ X\ Base\ System/
-cp -rp /Volumes/esd/BaseSystem.dmg /Volumes/OS\ X\ Base\ System/
-
-# Unmout temporary volumes...
-hdiutil detach /Volumes/esd
-hdiutil detach /Volumes/OS\ X\ Base\ System
-
-# Process ISO image file...
-hdiutil convert Sierra.cdr.dmg -format UDTO -o Sierra.iso
+# Convert bootable image to ISO format...
+hdiutil convert /tmp/HighSierra.cdr.dmg -format UDTO -o ~/Downloads/Operating\ Systems/macOS-High-Sierra.iso
 
 # Cleanup...
-mv Sierra.iso.cdr Sierra.iso
-rm Sierra.cdr.dmg
+hdiutil detach /Volumes/iso
+mv ~/Downloads/Operating\ Systems/macOS-High-Sierra.iso.cdr ~/Downloads/Operating\ Systems/macOS-High-Sierra.iso
+rm /tmp/HighSierra.cdr.dmg
 
