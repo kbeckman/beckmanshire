@@ -1,18 +1,22 @@
 [user]
-	name = kbeckman
-	email = kbeckman@redfournine.com
+  name = kbeckman
+  email = kbeckman@redfournine.com
 [diff]
-	tool = diffmerge
-[difftool "diffmerge"]
-	cmd = /Applications/DiffMerge.app/Contents/MacOS/diffmerge --caption=File-Diff --title1=Latest-Revision $LOCAL $REMOTE
+  tool = rubymine
 [merge]
-	tool = diffmerge
+  tool = rubymine
+[difftool "diffmerge"]
+  cmd = /Applications/DiffMerge.app/Contents/MacOS/diffmerge --caption=File-Diff --title1=Latest-Revision $LOCAL $REMOTE
 [mergetool "diffmerge"]
-	cmd = /Applications/DiffMerge.app/Contents/MacOS/diffmerge --merge --caption=File-Merge --title1=Remote --title2=Merge-Result --title3=Local-Changes --result=$MERGED $REMOTE $BASE $LOCAL
+  cmd = /Applications/DiffMerge.app/Contents/MacOS/diffmerge --merge --caption=File-Merge --title1=Remote --title2=Merge-Result --title3=Local-Changes --result=$MERGED $REMOTE $BASE $LOCAL
+[difftool "rubymine"]
+  cmd = mine diff $LOCAL $REMOTE
+[mergetool "rubymine"]
+  cmd = mine merge $LOCAL $REMOTE $BASE $MERGED
 [mergetool]
-	keepBackup = false
+  keepBackup = false
 [color]
-	ui = true
+  ui = true
 [alias]
 [core]
-	excludesfile = ~/.gitignore_global
+  excludesfile = ~/.gitignore_global
