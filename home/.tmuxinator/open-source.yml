@@ -1,0 +1,29 @@
+# ~/.tmuxinator/open-source.yml
+
+name: open-source
+root: ~/code/github.com/kbeckman
+
+startup_window: commish
+
+windows:
+  - editor:
+  - commish:
+      root:   ~/code/github.com/kbeckman/commish
+      layout: even-horizontal
+      panes:
+        - git status
+        -
+  - vcr:
+      root:   ~/code/github.com/kbeckman/vcr
+      layout: even-horizontal
+      panes:
+        - git status
+        -
+  - console:
+      layout: "a289,278x74,0,0{138x74,0,0,1,139x74,139,0[139x22,139,0,4,139x28,139,23,8,139x22,139,52,9]}"
+      panes:
+        - docker-machine ls
+        -
+        -
+        -
+
