@@ -3,10 +3,8 @@
 home/.vim/.netrwhist
 
 # IntelliJ / Rubymine / Goland / Etc
+*.code-workspace
 .idea
-
-# RVM
-.ruby-gemset
 
 # dotenv-rails
 .env.local
