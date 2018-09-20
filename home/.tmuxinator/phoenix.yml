@@ -1,0 +1,25 @@
+# ~/.tmuxinator/example.yml
+
+name:           programming-phoenix
+startup_window: phoenix
+root:           ~/code/sandbox/programming-phoenix/rumbl
+
+on_project_first_start: ~/.tmuxinator/phoenix-setup.sh
+on_project_stop:        ~/.tmuxinator/phoenix-teardown.sh
+
+windows:
+  - editor:
+  - phoenix:
+      layout: "e429,203x60,0,0{101x60,0,0,0,101x60,102,0[101x29,102,0,2,101x30,102,30,3]}"
+      panes:
+        - git status
+        - mix phoenix.server
+        - iex -S mix
+  - console:
+      layout: "317c,314x84,0,0{156x84,0,0,2,157x84,157,0[157x33,157,0,4,157x27,157,34,5,157x22,157,62,9]}"
+      panes:
+        - docker-machine ls
+        -
+        -
+        -
+
