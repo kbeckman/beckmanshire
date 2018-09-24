@@ -14,6 +14,6 @@ To get up and running quickly...
 ```shell
 gem install homesick
 homesick clone git@github.com:kbeckman/beckmanshire.git
-homesick symlink beckmanshire
+homesick link beckmanshire
 ```
 
