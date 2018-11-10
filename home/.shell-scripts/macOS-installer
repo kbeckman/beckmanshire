@@ -20,7 +20,7 @@ class MacOsInstallerOptions
       opts.separator ''
       opts.separator 'Switch Options:'
 
-      options.version = 'Sierra'
+      options.version = 'Mojave'
       opts.on('-n', '--name [VERSION_NAME]', "macOS version name (default: '#{options.version}').") do |version|
         options.version = version
       end
@@ -49,5 +49,5 @@ app_path    = "/Applications/Install macOS #{options.version}.app"
 installer   = "#{app_path}/Contents/Resources/createinstallmedia"
 volume_path = "/Volumes/#{options.volume}"
 
-system "caffeinate -im sudo '#{installer}' --volume '#{volume_path}' --applicationpath '#{app_path}' --nointeraction"
+system "caffeinate -im sudo '#{installer}' --volume '#{volume_path}' --nointeraction"
 
