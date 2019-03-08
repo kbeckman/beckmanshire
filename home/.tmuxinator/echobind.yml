@@ -1,7 +1,7 @@
 # ~/.tmuxinator/echobind.yml
 
 name:           echobind
-startup_window: hearken
+startup_window: write_the_world
 root:           ~/code/github.com/echobind
 
 on_project_first_start: ~/.tmuxinator/echobind-setup.sh
@@ -9,25 +9,12 @@ on_project_stop:        bash ~/.tmuxinator/echobind-teardown.sh
 
 windows:
   - editor:
-  #- guide_genetics:
-  #    root:   ~/code/github.com/echobind/guide-genetics
-  #    layout: "2c29,310x84,0,0{154x84,0,0,1,155x84,155,0,4}"
-  #    panes:
-  #      - git status
-  #      - be rspec --version
-  #- write_the_world:
-  #    root:   ~/code/github.com/echobind/wtw
-  #    layout: "2c29,310x84,0,0{154x84,0,0,1,155x84,155,0,4}"
-  #    panes:
-  #      - git status
-  #      - be rspec --version
-  - hearken:
-      root:   ~/code/github.com/echobind/hearken/ems
-      layout: "9df1,203x61,0,0{101x61,0,0,1,101x61,102,0[101x45,102,0,3,101x15,102,46,7]}"
+  - write_the_world:
+      root:   ~/code/github.com/echobind/wtw
+      layout: "2c29,310x84,0,0{154x84,0,0,1,155x84,155,0,4}"
       panes:
-        - alias be='bundle exec' && git status
-        - alias be='bundle exec' && be rspec --version
-        -
+        - git status
+        - be rspec --version
   - console:
       layout: "317c,314x84,0,0{156x84,0,0,2,157x84,157,0[157x33,157,0,4,157x27,157,34,5,157x22,157,62,9]}"
       panes:
@@ -35,3 +22,17 @@ windows:
         -
         -
         -
+
+  #  - hearken:
+  #    root:   ~/code/github.com/echobind/hearken/ems
+  #    layout: "9df1,203x61,0,0{101x61,0,0,1,101x61,102,0[101x45,102,0,3,101x15,102,46,7]}"
+  #    panes:
+  #      - alias be='bundle exec' && git status
+  #      - alias be='bundle exec' && be rspec --version
+  #      -
+  # - guide_genetics:
+  #    root:   ~/code/github.com/echobind/guide-genetics
+  #    layout: "2c29,310x84,0,0{154x84,0,0,1,155x84,155,0,4}"
+  #    panes:
+  #      - git status
+  #      - be rspec --version
