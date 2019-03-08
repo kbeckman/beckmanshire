@@ -2,13 +2,17 @@
 *.swp
 home/.vim/.netrwhist
 
-# IntelliJ / Rubymine / Goland / Etc
+# Editors and IDEs
 *.code-workspace
 .idea
 
 # dotenv-rails
-.env.local
-.env.test.local
+.env*.*local
+
+# RVM / ASDF / etc
+.ruby-version
+.ruby-gemset
+.tool-versions
 
 # Other
 .DS_Store
