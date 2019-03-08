@@ -39,7 +39,7 @@ if options.file.nil? || options.file == ''
   exit
 end
 
-DIGEST_FUNCTIONS = %w(sha1 sha256 md5)
+DIGEST_FUNCTIONS = %w(sha256 md5)
 
 DIGEST_FUNCTIONS.each do |function|
   system "openssl dgst -#{function} #{options.file}"
