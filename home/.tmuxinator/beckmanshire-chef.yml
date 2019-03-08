@@ -1,11 +1,11 @@
 # ~/.tmuxinator/beckmanshire-chef.yml
 
 name: beckmanshire-chef
-root: ~/Source-Code/github.com/kbeckman/beckmanshire-chef
+root: ~/code/github.com/kbeckman/beckmanshire-chef
 
 # Use Chef Ruby instead of system Ruby...
 pre_window: eval "$(chef shell-init zsh)"
-startup_window: cookbooks
+startup_window: cookbook-bootstrap
 
 windows:
   - vim:
@@ -13,9 +13,9 @@ windows:
       layout: even-horizontal
       panes:
         - knife node list
-        - ssh vm-macos-high-sierra
-  - cookbooks:
-      root:   ~/code/github.com/kbeckman/beckmanshire-chef/cookbooks
+        - ssh vm-macos-highsierra
+  - cookbook-bootstrap:
+      root:   ~/code/github.com/kbeckman/beckmanshire-chef/cookbooks/chef-bootstrap
       layout: even-horizontal
       panes:
         - git status
