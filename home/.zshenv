@@ -1,6 +1,9 @@
 # Golang...
-export GOPATH=$HOME/Source-Code/go
+export GOPATH=$HOME/code/go
 export PATH="$PATH:$GOPATH/bin"
+
+# Dependencies...
+export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 
 # Custom $PATH setup...
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:$PATH"
