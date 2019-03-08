@@ -1,17 +1,35 @@
 # ~/.tmuxinator/blog.yml
 
 name: blog
-root: ~/code/github.com/kbeckman/blog
+root: ~/code/github.com/redfournine
 
-startup_window: editor
+startup_window: blog
 
 windows:
   - editor:
-  - c4sc-blog:
-      layout: "a289,278x74,0,0{138x74,0,0,1,139x74,139,0[139x22,139,0,4,139x28,139,23,8,139x22,139,52,9]}"
+  - terraform:
+      root: ~/code/github.com/redfournine/terraform-redfournine
+      layout: even-horizontal
       panes:
         - git status
-        - middleman --help
+        - terraform --help
+  - blog:
+      root:   ~/code/github.com/redfournine/blog
+      layout: even-horizontal
+      panes:
+        - git status
+        -
+  - theme:
+      root:   ~/code/github.com/redfournine/blog-theme
+      layout: even-horizontal
+      panes:
+        - git status
+        -
+  - console:
+      layout: "a289,278x74,0,0{138x74,0,0,1,139x74,139,0[139x22,139,0,4,139x28,139,23,8,139x22,139,52,9]}"
+      panes:
+        - docker-machine ls
+        - cd blog && be jekyll serve --watch
         -
         -
 
