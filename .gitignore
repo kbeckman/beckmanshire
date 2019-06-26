@@ -1,0 +1,7 @@
+# TMUXINATOR projects...
+#   - only persist personal, non-client projects
+#   - record generic project confiurations in "example" project files
+*.yml
+*-env.sh
+*-setup.sh
+*-teardown.sh
