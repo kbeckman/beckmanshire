@@ -4,6 +4,7 @@ home/.vim/.netrwhist
 
 # Editors and IDEs
 *.code-workspace
+.elixir_ls
 .idea
 
 # dotenv-rails
