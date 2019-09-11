@@ -19,6 +19,7 @@ home/.vim/.netrwhist
 # Pythonn
 *.egg-info
 __pycache__
+.pytest_cache
 
 # Other
 .DS_Store
