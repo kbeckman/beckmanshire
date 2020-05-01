@@ -1,11 +1,13 @@
 # ~/.tmuxinator/example.yml
 
-name:           example
-startup_window: web-app
-root:           ~/code/github.com/kbeckman
+name: example
+root: ~/code/github.com/kbeckman
 
-on_project_first_start: ~/.tmuxinator/example-setup.sh
-on_project_stop:        ~/.tmuxinator/example-teardown.sh
+on_project_first_start: ~/.tmuxinator/example/setup.sh
+on_project_stop:        ~/.tmuxinator/example/teardown.sh
+pre_window:             ~/.tmuxinator/example/env.sh
+
+startup_window: web-app
 
 windows:
   - editor:
