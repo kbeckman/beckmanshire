@@ -1,7 +1,3 @@
-# Golang...
-export GOPATH=$HOME/code/go
-export PATH="$PATH:$GOPATH/bin"
-
 # Dependencies...
 export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 
