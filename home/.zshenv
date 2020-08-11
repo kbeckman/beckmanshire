@@ -14,3 +14,7 @@ export BUNDLER_EDITOR=vim
 env_docker=~/.env-docker
 [[ -e $env_docker ]] && source $env_docker
 
+# Terraform setup...
+mkdir -p $HOME/.terraform.d/plugin-cache
+export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
+
