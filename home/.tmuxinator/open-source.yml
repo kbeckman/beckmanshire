@@ -3,18 +3,18 @@
 name: open-source
 root: ~/code/github.com/kbeckman
 
-startup_window: commish
+startup_window: coding-exercises
 
 windows:
   - editor:
   - commish:
-      root:   ~/code/github.com/kbeckman/commish
+      root:   ~/code/github.com/redfournine/commish
       layout: even-horizontal
       panes:
         - git status
         -
-  - vcr:
-      root:   ~/code/github.com/kbeckman/vcr
+  - coding-exercises:
+      root:   ~/code/github.com/kbeckman/coding-exercises
       layout: even-horizontal
       panes:
         - git status
@@ -27,3 +27,9 @@ windows:
         -
         -
 
+        #  - vcr:
+        #      root:   ~/code/github.com/kbeckman/vcr
+        #      layout: even-horizontal
+        #      panes:
+        #        - git status
+        #        -
