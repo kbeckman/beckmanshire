@@ -49,7 +49,8 @@ ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(asdf aws brew bundler git knife rails ruby terraform tmux vi-mode)
+plugins=(asdf aws bundler colored-man-pages vi-mode)
+# disabled plugins: aws brew knife git rails ruby terrafrom tmux
 
 # User configuration
 
