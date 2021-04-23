@@ -2,24 +2,27 @@
     name = kbeckman
     email = kbeckman@redfournine.com
 [diff]
-    tool = rubymine
+    tool = vscode
 [merge]
-    tool = rubymine
+    tool = vscode
+[mergetool]
+    keepBackup = false
 [difftool "rubymine"]
     cmd = mine diff $LOCAL $REMOTE
 [mergetool "rubymine"]
     cmd = mine merge $LOCAL $REMOTE $BASE $MERGED
-[mergetool]
-    keepBackup = false
-[color]
-    ui = true
-[alias]
-[core]
-    excludesfile = /Users/keibeck/.gitignore_global
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+[mergetool "vscode"]
+    cmd = code --wait $MERGED
 [difftool "sourcetree"]
     cmd = opendiff \"$LOCAL\" \"$REMOTE\"
     path = 
 [mergetool "sourcetree"]
     cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
     trustExitCode = true
+[color]
+    ui = true
+[core]
+    excludesfile = /Users/keibeck/.gitignore_global
 
