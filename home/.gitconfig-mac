@@ -24,5 +24,7 @@
 [color]
     ui = true
 [core]
-    excludesfile = /Users/keibeck/.gitignore_global
+    excludesfile = /Users/kbeckman/.gitignore_global
 
+[init]
+	defaultBranch = main
