@@ -21,6 +21,10 @@ home/.vim/.netrwhist
 __pycache__
 .pytest_cache
 
+# Terraform
+.terraform
+
 # Other
 .DS_Store
+.ignore
 
